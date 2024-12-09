@@ -31,8 +31,7 @@ class UnityBridge: UIResponder, UIApplicationDelegate, UnityFrameworkListener {
    
         let ufw = bundle?.principalClass?.getInstance()
         if ufw?.appController() == nil {
-            let machineHeader = UnsafeMutablePointer<MachHeader>.allocate(capacity: 1)
-            machineHeader.pointee = _mh_execute_header
+            let machineHeader = #dsohandle.assumingMemoryBound(to: MachHeader.self)
             ufw!.setExecuteHeader(machineHeader)
         }
         return ufw
