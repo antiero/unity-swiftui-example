@@ -15,7 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // the Unity window behind it.
             vc.view.isOpaque = false
             vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.0)
-            vc.view.tag = UIWindowCustom.PassthroughTag
+            
+            // This appears to not allow the ColorPicker to function.
+            //vc.view.tag = UIWindowCustom.PassthroughTag
 
             self.window = UIWindowCustom(windowScene: windowScene)
             self.window!.windowLevel = .normal + 100.0
